@@ -5,6 +5,13 @@ $(document).ready(function(){$("[class^=cir]").click(function(evt){
   // console.log(num)
   score+=parseInt(num*10)
   updategame()
+
+  $(".target").click(function(evt){
+    var spot=$("<div class=spot></div>")
+    spot.css("left",evt.pageX-$(this).offset().left+"px")
+        .css("top",evt.pageY-$(this).offset().top+"px")
+    $(this).append(spot)
+  })
 })})
 function updategame(){
   $(".score").text("Score: "+score)
@@ -32,9 +39,3 @@ $(window).mousemove(function(evt){
   $(".mouseSymbol").css("left",evt.pageX+"px").css("top",evt.pageY+"px")
 })
 
-$(".target").click(function(evt){
-  var spot=$("<div class=spot></div>")
-  spot.css("left",evt.pageX-$(this).offset().left+"px")
-      .css("top",evt.pageY-$(this).offset().top+"px")
-  $(this).append(spot)
-})
